@@ -1,0 +1,173 @@
+@import url(reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+  --pastel-blue: #D4DEFF;
+  --ligh-blue: #849FFF;
+  --library-blue: #2A59FD;
+  --shadow-blue: #1F3DA6;
+  --dark-blue: #0A1641;
+}
+
+html{
+  font-family: 'Montserrat', sans-serif;
+  background: #F2F2F2;
+}
+
+.main-container{
+  padding: 40px;
+}
+/* Commons elements */
+h1{
+  font-size: 40px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  margin-top: 0px;
+}
+.tag{
+  font-weight: 300;
+  color: var(--shadow-blue);
+  border: 1px solid var(--library-blue);
+  padding: 8px 30px;
+  border-radius: 40px;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: all ease-in-out .2s;
+}
+.tag.active, .tag:hover{
+  background: var(--library-blue);
+  color: #fff;
+}
+/* NAVIGATION */
+nav{
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+}
+nav #filters{
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr 3fr;
+  align-items: start;
+  justify-items: start;
+}
+nav #filters h2{
+  grid-area: 1 / 1 / 1 / 4;
+}
+nav #stats{
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 2fr;
+  align-items: center;
+  font-weight: 700;
+}
+nav #stats h2{
+  grid-area: 1 / 1 / 1 / 3;
+}
+nav #stats div{
+  font-size: 1.25em;
+}
+nav #stats #read .number{
+  color: var(--ligh-blue);
+}
+nav #stats #unread .number{
+  color: var(--library-blue);
+}
+nav h2{
+  font-size: 1.25em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+/* | Card container */
+#cards-container{
+  display: grid;
+  grid-template: 1fr / 1fr 1fr 1fr 1fr;
+  gap: 30px;
+}
+/* Card global design */
+.card{
+  border-radius: 20px;
+  padding: 30px 30px;
+  height: 400px;
+  display: grid;
+  grid-template: 10fr 1fr / 1fr;
+  justify-items: stretch;
+  align-items: center;
+}
+.card .card-info p{
+  text-align: center;
+  width: 100%;
+}
+.card .card-info .name{
+  font-size: 1.875em;
+  font-style: italic;
+  font-weight: 600;
+  margin: 0;
+}
+.card .card-info .author{
+  font-weight: 700;
+  margin: 0;
+}
+.card .card-info .name::after{
+  display: block;
+  height: 2px;
+  content: ' ';
+  width: 20%;
+  background: #fff;
+  margin: 20px auto;
+}
+.card .card-controls button{
+  width: 100%;
+  padding: 15px 0px;
+  border-radius: 80px;
+  font-size: 1.125em;
+  font-weight: 400;
+  border: 0px;
+  cursor: pointer;
+}
+.card#addBookForm{
+  background: #fff;
+  border: 1px solid #DDDDDD;
+}
+/* Add book card */
+#addBookForm p input{
+  border: 0px;
+  text-align: center;
+}
+#addBookForm p.name textarea{
+  border: 0px;
+  text-align: center;
+  resize: none;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--shadow-blue);
+  text-decoration: underline;
+}
+#addBookForm p.author input{
+  font-weight: 700;
+  border-bottom: 2px solid var(--shadow-blue);
+}
+#addBookForm p.pages input{
+  border-bottom: 2px solid var(--shadow-blue);
+  width: 10%;
+}
+/* Unread book card */
+.card.unread{
+  background: linear-gradient(180deg, #2A59FD 1.04%, #849FFF 100%);
+  box-shadow: 0px 7px 10px 2px rgba(0, 0, 0, 0.05);
+  color: #fff;
+}
+.card.unread .card-controls button{
+  background: var(--shadow-blue);
+  color: #fff;
+}
+/* read book card */
+.card.read{
+  background: linear-gradient(180deg, rgba(42, 89, 253,.2) 1.04%, rgba(132, 159, 255,.2) 100%);
+  box-shadow: 0px 7px 10px 2px rgba(0, 0, 0, 0.05);
+  color: #fff;
+}
+.card.read .card-controls button{
+  background: var(--ligh-blue);
+  color: #fff;
+}
