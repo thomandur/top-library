@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="js/script.js" defer></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -31,7 +30,7 @@
       </section>
     </nav>
     <section id="cards-container">
-      <article class="card read" id="0">
+      <!-- <article class="card read" id="0">
         <div class="card-info">
           <p class="name">test</p>
           <p class="author">test</p>
@@ -50,14 +49,22 @@
         <div class="card-controls">
           <button>I read this book</button>
         </div>
-      </article>
+      </article> -->
       <article id="addBookForm" class="card">
         <div class="card-info">
           <p class="name"><textarea name="title" rows="4" placeholder="Titre du livre..."></textarea></p>
           <p class="author"><input type="text" name="author" placeholder="Auteur"></p>
           <p class="pages"><input type="number" name="pages" placeholder="Pages"> pages</p>
-          Read <input type="radio" name="read" value="true">
-          Unread <input type="radio" name="read" value="false"><br>
+          <div class="switch">
+            <span id="btnRead">
+              Read
+            </span>
+            <span id="btnUnread">
+              Unread
+            </span>
+          </div>
+          <input id="checkRead" type="radio" name="read" value="true">
+          <input id="checkUnread" type="radio" name="read" value="false"><br>
         </div>
         <div class="card-controls">
           <button id="submitButton">Add book</button>
@@ -76,6 +83,6 @@
 
   <div id="test">
   </div>
+  <script src="js/script.js" defer></script>
 </body>
-
 </html>

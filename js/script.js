@@ -38,6 +38,9 @@ class Library {
   length() {
     return this.books.length
   }
+  changeState(id) {
+    return this.read === 'true' ? this.read = false : this.read = true
+  }
 }
 
 const myLibrary = new Library()
@@ -48,6 +51,9 @@ const newBookCard = document.getElementById('addBookForm')
 const actualCards = document.getElementsByClassName('card')
 const statRead = document.querySelector('#read > span')
 const statUnread = document.querySelector('#unread > span')
+const btnRead = document.querySelector('#btnRead')
+const btnUnread = document.querySelector('#btnUnread')
+const cardBtn = document.querySelectorAll('.card-controls')
 
 // Initial DOM
 
@@ -67,14 +73,17 @@ const getBookInputs = () => {
   return book
 }
 
-const cardTemplate = ( name, author, pages) => {
-  var card = `<div class="card-info">
+const cardTemplate = (id ,name, author, pages, read) => {
+  const bookReaded = read != 'read' ? 'I read this book' : 'I didnt read this book'
+  const card = `<div class="card-info">
           <p class="name">${name}</p>
           <p class="author">${author}</p>
           <p class="pages">${pages} pages</p>
         </div>
         <div class="card-controls">
-          <button>I read this book</button>
+          <button data-index="${id}">
+          ${bookReaded}
+          </button>
         </div>`
   return card
 }
@@ -89,9 +98,9 @@ const allBooks = () => {
     var articleCard = document.createElement('article')
     articleCard.classList.add('card')
     articleCard.classList.add(isRead)
-    articleCard.setAttribute('id', book.id)
-    var cardInfo = cardTemplate(book.name, book.author, book.pages)
+    var cardInfo = cardTemplate(book.id, book.name, book.author, book.pages, isRead)
 
+    
     articleCard.innerHTML = cardInfo
     cardContainer.insertBefore(articleCard, newBookCard)
   }
@@ -110,9 +119,32 @@ addBookForm.addEventListener('click', (e) => {
   // View
   statRead.innerHTML = statBook('read').length
   statUnread.innerHTML = statBook('unread').length
+  this.cardBtn = document.querySelectorAll('.card-controls > button')
+  this.cardBtn.forEach(element => {
+    element.addEventListener('click', this.changeState())
+  });
+  // console.log(this.cardBtn)
   allBooks()
 })
+
+
 
 // Initialize view
 statRead.innerHTML = statBook('read').length
 statUnread.innerHTML = statBook('unread').length
+
+const DOMswitch = (radio) => {
+  var read = document.querySelectorAll('input[type="radio"]')
+  radio === 1 ? read[0].checked = true: read[1].checked = true
+}
+
+btnRead.addEventListener('click', function(){
+  document.getElementById('checkRead').checked = true
+  this.classList.add('active')
+  btnUnread.classList.remove('active')
+})
+btnUnread.addEventListener('click', function(){
+  document.getElementById('checkUnread').checked = true
+  this.classList.add('active')
+  btnRead.classList.remove('active')
+})
