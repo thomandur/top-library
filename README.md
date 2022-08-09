@@ -11,4 +11,3 @@ Créer une bibliothèque où on peut ajouter les livres qui nous appartiennent e
 ## Contraintes
 Il faut impérativement utiliser la programmation orienté objet pour ce projet. 
 
-![the design](https://cdn.statically.io/gh/TheOdinProject/curriculum/main/html_css/grid-lessons/project-dashboard/dashboard-project.png "Admin dashboard")
